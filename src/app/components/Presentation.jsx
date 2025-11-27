@@ -17,7 +17,7 @@ function Presentation() {
     <div className="w-96 h-96 rounded-full overflow-hidden shadow-2xl shadow-[#fa5c0f]/80">
       <Image
         className="w-full h-full object-cover"
-        src="/Images/foto1.jpg"
+        src="/images/foto1.jpg"
         alt="Mi foto"
         width={400}
         height={400}

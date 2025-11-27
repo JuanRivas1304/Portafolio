@@ -8,7 +8,7 @@ import { faUpRightFromSquare } from '@fortawesome/free-solid-svg-icons';
 function Projects() {
   const projects = [
     {
-      img: "/Images/odontosalud1.png",
+      img: "/images/odontosalud1.png",
       alt: "Odontosalud",
       title: "Software de Gestion de citas medicas",
       desc: "Desarrollé un sistema de gestion de citas medicas con distintos dashboards y verificación de cuentas mediante códigos enviados al correo.",
@@ -16,7 +16,7 @@ function Projects() {
       github: "https://github.com/JuanRivas1304/OdontoSalud",
     },
     {
-      img: "/Images/jiraclone.png",
+      img: "/images/jiraclone.png",
       alt: "Jira Clone",
       title: "Jira Clone con Next 14",
       desc: "App tipo Jira con autenticación, drag & drop, dashboards y manejo de tareas.",
@@ -24,7 +24,7 @@ function Projects() {
       github: "https://github.com/JuanRivas1304/next14-jira-clone",
     },
     {
-      img: "/Images/todolist.png",
+      img: "/images/todolist.png",
       alt: "To-Do List",
       title: "To-Do List",
       desc: "Aplicación para gestionar tareas con almacenamiento persistente.",
@@ -32,7 +32,7 @@ function Projects() {
       github: "https://github.com/JuanRivas1304/To-Do-List",
     },
     {
-      img: "/Images/calculadora.png",
+      img: "/images/calculadora.png",
       alt: "Calculadora",
       title: "Calculadora Web",
       desc: "Calculadora basica con tema claro y oscuro.",
