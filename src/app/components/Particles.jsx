@@ -1,3 +1,4 @@
+//Fondo interactivo
 'use client';
 import { useCallback, useEffect, useState } from "react";
 import Particles, { initParticlesEngine } from "@tsparticles/react";
@@ -31,6 +32,7 @@ const ParticlesBackground = () => {
     return (
         init && <Particles
             id="tsparticles"
+            className="absolute inset-0 -z-10"
             particlesLoaded={particlesLoaded}
             options={{
                 background: {
