@@ -61,7 +61,7 @@ function Presentation() {
         <a href="https://www.linkedin.com/in/juan-diego-murillo-rivas-05447430b/" title="Ir a mi Linkedin" target="_blank" rel="noopener noreferrer">
           <FontAwesomeIcon icon={faLinkedinIn} className="hover:text-[#f73d11] transition-colors duration-300"/>
         </a>
-        <a href="https://mail.google.com/mail/?view=cm&fs=1&to=juandrivas66@gmail.com" title="Envia me un correo" target="_blank" rel="noopener noreferrer">
+        <a href="mailto:juandrivas66@gmail.com" title="Envia me un correo" target="_blank" rel="noopener noreferrer">
           <FontAwesomeIcon icon={faEnvelope} className="hover:text-[#f73d11] transition-colors duration-300"/>
         </a>
       </div>
