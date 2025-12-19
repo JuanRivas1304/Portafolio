@@ -38,6 +38,14 @@ function Projects() {
       desc: "Calculadora basica con tema claro y oscuro.",
       demo: "https://calculadora-blond-seven.vercel.app/",
       github: "https://github.com/JuanRivas1304/Calculadora",
+    },
+    {
+      img: "/images/habit-tracker.png",
+      alt: "Habit Tracker",
+      title: "Habit Tracker",
+      desc: "Aplicación para gestionar hábitos con almacenamiento persistente.",
+      demo: "https://habit-tracker-plum-sigma.vercel.app/",
+      github: "https://github.com/JuanRivas1304/Habit-Tracker",
     }
   ];
 
