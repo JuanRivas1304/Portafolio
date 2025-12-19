@@ -1,5 +1,5 @@
-// Segunda sección
-import React from 'react'
+// Segunda sección - Projects
+import React from 'react';
 import Image from "next/image";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faGithub } from '@fortawesome/free-brands-svg-icons';
@@ -54,14 +54,14 @@ function Projects() {
           Algunos de los proyectos en los que he trabajado recientemente 😁
         </h6>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-10">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
           {projects.map((project, index) => (
             <div
               key={index}
               className="border rounded-xl shadow-md hover:shadow-xl transition-shadow duration-300 bg-white flex flex-col h-full"
             >
               {/* Imagen */}
-              <div className="w-full h-56 relative rounded-t-xl overflow-hidden">
+              <div className="w-full h-48 sm:h-56 relative rounded-t-xl overflow-hidden">
                 <Image
                   src={project.img}
                   alt={project.alt}
@@ -72,25 +72,24 @@ function Projects() {
 
               {/* Texto */}
               <div className="p-5 flex flex-col flex-grow">
-                <h5 className="text-xl font-semibold mb-2 text-gray-600">
+                <h5 className="text-lg sm:text-xl font-semibold mb-2 text-gray-600">
                   {project.title}
                 </h5>
 
-                <p className="text-gray-500 mb-6 flex-grow">
+                <p className="text-gray-500 mb-4 flex-grow text-sm sm:text-base">
                   {project.desc}
                 </p>
 
                 {/* Links */}
-                <div className="flex gap-4 mt-auto pt-4">
+                <div className="flex flex-col sm:flex-row gap-2 sm:gap-4 mt-auto">
                   {project.demo && (
                     <a
                       href={project.demo}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="px-12 py-1 bg-orange-600 text-white font-semibold rounded-md hover:bg-[#f73d11] transition"
+                      className="px-4 py-2 bg-orange-600 text-white font-semibold rounded-md hover:bg-[#f73d11] transition text-sm flex items-center justify-center gap-2"
                     >
-                      <FontAwesomeIcon icon={faUpRightFromSquare} />
-                      Demo
+                      <FontAwesomeIcon icon={faUpRightFromSquare} /> Demo
                     </a>
                   )}
 
@@ -98,10 +97,9 @@ function Projects() {
                     href={project.github}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="px-12 py-1 border-2 border-orange-600 text-orange-600 font-semibold rounded-md hover:bg-[#f73d11] hover:text-white transition"
+                    className="px-4 py-2 border-2 border-orange-600 text-orange-600 font-semibold rounded-md hover:bg-[#f73d11] hover:text-white transition text-sm flex items-center justify-center gap-2"
                   >
-                    <FontAwesomeIcon icon={faGithub} />
-                    Código
+                    <FontAwesomeIcon icon={faGithub} /> Código
                   </a>
                 </div>
               </div>
