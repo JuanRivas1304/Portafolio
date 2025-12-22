@@ -31,7 +31,7 @@ function Presentation() {
           </h4>
 
           <p className="mt-4 text-gray-500 leading-relaxed text-sm md:text-base">
-            Desarrollador Web Full Stack apasionado por crear experiencias digitales excepcionales. Especializado en React, TypeScript y diseño moderno de interfaces.
+            Construyo aplicaciones web pensando en el usuario final. Me enfoco en lograr un equilibrio entre una experiencia visual cuidada, lógica sólida y una estructura de código clara, desarrollando aplicaciones funcionales y bien organizadas.
           </p>
 
           {/* BOTONES */}
