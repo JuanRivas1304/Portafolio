@@ -46,7 +46,7 @@ function Presentation() {
                 Contacto
               </button>
             </a>
-            <a href="Hojadevida juan diego.pdf" download="Hojadevida juan diego.pdf">
+            <a href="CV_Juan_Diego_Murillo_Rivas.pdf" download="CV_Juan_Diego_Murillo_Rivas.pdf">
               <button className="px-6 py-3 border-2 border-orange-500 text-orange-500 font-semibold rounded-md hover:bg-[#ea401a] hover:text-white transition">
                 Descargar CV
               </button>
