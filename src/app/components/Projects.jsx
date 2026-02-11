@@ -4,6 +4,74 @@ import Image from "next/image";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faGithub } from '@fortawesome/free-brands-svg-icons';
 import { faUpRightFromSquare } from '@fortawesome/free-solid-svg-icons';
+import {
+  FaReact,
+  FaJsSquare,
+  FaHtml5,
+  FaCss3Alt,
+  FaPython,
+} from "react-icons/fa";
+import {
+  SiNextdotjs,
+  SiTailwindcss,
+  SiPostgresql,
+  SiTypescript,
+  SiAppwrite,
+} from "react-icons/si";
+
+const techConfig = {
+  React: {
+    icon: FaReact,
+    color: "bg-sky-100 text-sky-700 border-sky-200",
+    label: "Librería para interfaces de usuario",
+  },
+  "Next.js": {
+    icon: SiNextdotjs,
+    color: "bg-gray-100 text-gray-800 border-gray-300",
+    label: "Framework fullstack para React",
+  },
+  JavaScript: {
+    icon: FaJsSquare,
+    color: "bg-yellow-100 text-yellow-700 border-yellow-300",
+    label: "Lenguaje de programación",
+  },
+  HTML: {
+    icon: FaHtml5,
+    color: "bg-orange-100 text-orange-700 border-orange-300",
+    label: "Estructura de la web",
+  },
+  CSS: {
+    icon: FaCss3Alt,
+    color: "bg-blue-100 text-blue-700 border-blue-300",
+    label: "Estilos y diseño visual",
+  },
+  Python: {
+    icon: FaPython,
+    color: "bg-green-100 text-green-700 border-green-300",
+    label: "Lenguaje backend y lógica",
+  },
+  PostgreSQL: {
+    icon: SiPostgresql,
+    color: "bg-indigo-100 text-indigo-700 border-indigo-300",
+    label: "Base de datos relacional",
+  },
+  TypeScript: {
+    icon: SiTypescript,
+    color: "bg-blue-100 text-blue-700 border-blue-300",
+    label: "JavaScript tipado",
+  },
+  "Tailwind CSS": {
+    icon: SiTailwindcss,
+    color: "bg-cyan-100 text-cyan-700 border-cyan-300",
+    label: "Framework de estilos utility-first",
+  },
+  Appwrite: {
+    icon: SiAppwrite,
+    color: "bg-pink-100 text-pink-700 border-pink-300",
+    label: "Backend as a Service",
+  },
+};
+
 
 function Projects() {
   const projects = [
@@ -11,7 +79,8 @@ function Projects() {
       img: "/images/odontosalud1.png",
       alt: "Odontosalud",
       title: "Software de Gestion de citas medicas",
-      desc: "Desarrollé un sistema de gestion de citas medicas con distintos dashboards y verificación de cuentas mediante códigos enviados al correo.",
+      desc: "Sistema web para la gestión de citas médicas con registro de usuarios, validaciones y verificación de cuentas por correo. Proyecto enfocado en resolver un problema real y practicar lógica backend y frontend.",
+      technologies: ["React", "PostgreSQL", "Next.js", "Python"],
       demo: null,
       github: "https://github.com/JuanRivas1304/OdontoSalud",
     },
@@ -19,15 +88,26 @@ function Projects() {
       img: "/images/jiraclone.png",
       alt: "Jira Clone",
       title: "Jira Clone con Next 14",
-      desc: "App tipo Jira con autenticación, drag & drop, dashboards y manejo de tareas.",
+      desc: "Aplicación web inspirada en Jira para crear y organizar tareas por estados. Implementé manejo de estados, componentes reutilizables y una interfaz enfocada en flujos de trabajo reales.",
+      technologies: ["Next.js", "Tailwind CSS", "React", "TypeScript", "Appwrite"],
       demo: "https://next14-jira-clone-lzbz.vercel.app/sign-in",
       github: "https://github.com/JuanRivas1304/next14-jira-clone",
+    },
+    {
+      img: "/images/habit-tracker.png",
+      alt: "Habit Tracker",
+      title: "Habit Tracker",
+      desc: "Aplicación web para el seguimiento de hábitos diarios con notas y persistencia de datos. Diseñada para el uso continuo y el control del progreso del usuario.",
+      technologies: ["Next.js", "Tailwind CSS"],
+      demo: "https://habit-tracker-plum-sigma.vercel.app/",
+      github: "https://github.com/JuanRivas1304/Habit-Tracker",
     },
     {
       img: "/images/todolist.png",
       alt: "To-Do List",
       title: "To-Do List",
-      desc: "Aplicación para gestionar tareas con almacenamiento persistente.",
+      desc: "Aplicación de lista de tareas desarrollada con JavaScript, html y css que permite agregar, completar y eliminar tareas. y cuenta con almacenamiento persistente.",
+      technologies: ["JavaScript", "HTML", "CSS"],
       demo: "https://to-do-list-nine-gules-93.vercel.app/",
       github: "https://github.com/JuanRivas1304/To-Do-List",
     },
@@ -35,17 +115,10 @@ function Projects() {
       img: "/images/calculadora.png",
       alt: "Calculadora",
       title: "Calculadora Web",
-      desc: "Calculadora basica con tema claro y oscuro.",
+      desc: "Calculadora web funcional con operaciones básicas y modo claro/oscuro. Proyecto enfocado en lógica de eventos, manipulación del DOM y validación de entradas.",
+      technologies: ["JavaScript", "HTML", "CSS"],
       demo: "https://calculadora-blond-seven.vercel.app/",
       github: "https://github.com/JuanRivas1304/Calculadora",
-    },
-    {
-      img: "/images/habit-tracker.png",
-      alt: "Habit Tracker",
-      title: "Habit Tracker",
-      desc: "Aplicación para gestionar hábitos con almacenamiento persistente.",
-      demo: "https://habit-tracker-plum-sigma.vercel.app/",
-      github: "https://github.com/JuanRivas1304/Habit-Tracker",
     }
   ];
 
@@ -88,8 +161,39 @@ function Projects() {
                   {project.desc}
                 </p>
 
+                {/* Tecnologías */}
+              <div className="mt-4 mb-4">
+                <div className="flex flex-wrap gap-2 mt-2">
+                  {project.technologies.map((tech, index) => {
+                    const techData = techConfig[tech];
+                    if (!techData) return null;
+
+                    const Icon = techData.icon;
+
+                    return (
+                      <div
+                        key={index}
+                        className={`group relative flex items-center gap-2 px-3 py-1.5 text-xs font-medium rounded-full border
+                        ${techData.color}`}
+                      >
+                        <Icon className="text-sm" />
+                        <span>{tech}</span>
+
+                        {/* Tooltip */}
+                        <div className="absolute bottom-full left-1/2 -translate-x-1/2 mb-2
+                          hidden group-hover:block
+                          bg-gray-900 text-white text-xs rounded-md px-2 py-1 whitespace-nowrap shadow-lg">
+                          {techData.label}
+                        </div>
+                      </div>
+                    );
+                  })}
+                </div>
+              </div>
+
+
                 {/* Links */}
-                <div className="flex flex-col sm:flex-row gap-2 sm:gap-4 mt-auto">
+                <div className="flex flex-col sm:flex-row gap-3 sm:gap-6 mt-auto">
                   {project.demo && (
                     <a
                       href={project.demo}
