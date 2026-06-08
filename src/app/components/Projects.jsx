@@ -94,6 +94,15 @@ function Projects() {
       github: "https://github.com/JuanRivas1304/next14-jira-clone",
     },
     {
+      img: "/images/akinmind.png",
+      alt: "AkinMind",
+      title: "AkinMind",
+      desc: "AkinMind es una aplicación de estudio que utiliza repetición espaciada e inteligencia artificial para crear y practicar tarjetas de aprendizaje de forma rápida, organizada y eficiente.",
+      technologies: ["Next.js", "Tailwind CSS", "React", "TypeScript", "Appwrite"],
+      demo: "https://akin-mind.vercel.app/login",
+      github: "https://github.com/JuanRivas1304/Akin-Mind",
+    },
+    {
       img: "/images/habit-tracker.png",
       alt: "Habit Tracker",
       title: "Habit Tracker",
