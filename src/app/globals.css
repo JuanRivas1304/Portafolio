@@ -29,3 +29,50 @@ body {
 html {
   scroll-behavior: smooth;
 }
+
+@layer utilities {
+  .reveal {
+    --reveal-delay: 0ms;
+    opacity: 0;
+    transform: translate3d(0, 20px, 0);
+    transition: opacity 480ms ease, transform 480ms cubic-bezier(0.22, 1, 0.36, 1);
+    transition-delay: var(--reveal-delay);
+    will-change: opacity, transform;
+  }
+
+  .reveal-left {
+    transform: translate3d(-28px, 0, 0);
+  }
+
+  .reveal-right {
+    transform: translate3d(28px, 0, 0);
+  }
+
+  .reveal-scale {
+    transform: translate3d(0, 20px, 0) scale(0.97);
+  }
+
+  .reveal-visible {
+    opacity: 1;
+    transform: translate3d(0, 0, 0) scale(1);
+  }
+
+  .reveal-card:hover {
+    transform: translate3d(0, -6px, 0) scale(1);
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    html {
+      scroll-behavior: auto;
+    }
+
+    .reveal,
+    .reveal-left,
+    .reveal-right,
+    .reveal-scale {
+      opacity: 1;
+      transform: none;
+      transition: none;
+    }
+  }
+}
