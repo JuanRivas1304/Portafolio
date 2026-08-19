@@ -57,6 +57,11 @@ html {
     transform: translate3d(0, 0, 0) scale(1);
   }
 
+  .reveal-returning {
+    --reveal-delay: 0ms;
+    transition-duration: 260ms;
+  }
+
   .reveal-card:hover {
     transform: translate3d(0, -6px, 0) scale(1);
   }

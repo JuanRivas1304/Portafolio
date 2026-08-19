@@ -4,7 +4,9 @@ import React, { useEffect, useRef, useState } from 'react';
 
 function Reveal({ children, className = '', delay = 0, direction = 'up', scale = false }) {
   const elementRef = useRef(null);
+  const hasEnteredViewport = useRef(false);
   const [isVisible, setIsVisible] = useState(false);
+  const [isReturning, setIsReturning] = useState(false);
 
   useEffect(() => {
     const element = elementRef.current;
@@ -14,8 +16,11 @@ function Reveal({ children, className = '', delay = 0, direction = 'up', scale =
     const observer = new IntersectionObserver(
       ([entry]) => {
         if (entry.isIntersecting) {
+          setIsReturning(hasEnteredViewport.current);
+          hasEnteredViewport.current = true;
           setIsVisible(true);
-          observer.disconnect();
+        } else {
+          setIsVisible(false);
         }
       },
       { threshold: 0.15, rootMargin: '0px 0px -8%' }
@@ -31,6 +36,7 @@ function Reveal({ children, className = '', delay = 0, direction = 'up', scale =
     `reveal-${direction}`,
     scale ? 'reveal-scale' : '',
     isVisible ? 'reveal-visible' : '',
+    isReturning ? 'reveal-returning' : '',
     className,
   ].filter(Boolean).join(' ');
 
