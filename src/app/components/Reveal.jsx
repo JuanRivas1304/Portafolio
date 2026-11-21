@@ -1,53 +1,38 @@
-'use client';
+"use client";
 
-import React, { useEffect, useRef, useState } from 'react';
+import { useEffect, useRef, useState } from "react";
 
-function Reveal({ children, className = '', delay = 0, direction = 'up', scale = false }) {
-  const elementRef = useRef(null);
-  const hasEnteredViewport = useRef(false);
-  const [isVisible, setIsVisible] = useState(false);
-  const [isReturning, setIsReturning] = useState(false);
+export default function Reveal({ children, delay = 0, as: Tag = "div", className = "" }) {
+  const ref = useRef(null);
+  const [shown, setShown] = useState(false);
 
   useEffect(() => {
-    const element = elementRef.current;
-
-    if (!element) return undefined;
-
+    const el = ref.current;
+    if (!el) return undefined;
+    if (typeof IntersectionObserver === "undefined") {
+      setShown(true);
+      return undefined;
+    }
     const observer = new IntersectionObserver(
       ([entry]) => {
         if (entry.isIntersecting) {
-          setIsReturning(hasEnteredViewport.current);
-          hasEnteredViewport.current = true;
-          setIsVisible(true);
-        } else {
-          setIsVisible(false);
+          setShown(true);
+          observer.disconnect();
         }
       },
-      { threshold: 0.15, rootMargin: '0px 0px -8%' }
+      { threshold: 0.1, rootMargin: "0px 0px -40px 0px" }
     );
-
-    observer.observe(element);
-
+    observer.observe(el);
     return () => observer.disconnect();
   }, []);
 
-  const revealClasses = [
-    'reveal',
-    `reveal-${direction}`,
-    scale ? 'reveal-scale' : '',
-    isVisible ? 'reveal-visible' : '',
-    isReturning ? 'reveal-returning' : '',
-    className,
-  ].filter(Boolean).join(' ');
-
-  return React.cloneElement(React.Children.only(children), {
-    ref: elementRef,
-    className: `${children.props.className || ''} ${revealClasses}`.trim(),
-    style: {
-      ...children.props.style,
-      '--reveal-delay': `${delay}ms`,
-    },
-  });
+  return (
+    <Tag
+      ref={ref}
+      className={`reveal${shown ? " in" : ""}${className ? ` ${className}` : ""}`}
+      style={{ transitionDelay: `${delay}ms` }}
+    >
+      {children}
+    </Tag>
+  );
 }
-
-export default Reveal;

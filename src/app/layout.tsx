@@ -1,23 +1,18 @@
 import type { Metadata } from "next";
-import localFont from "next/font/local";
+import { Inter } from "next/font/google";
 import "./globals.css";
-import Footer from "./components/Footer";
-import LanguageProvider from "./i18n/LanguageProvider";
+import { LanguageProvider } from "./i18n/LanguageProvider";
 
-const geistSans = localFont({
-  src: "./fonts/GeistVF.woff",
-  variable: "--font-geist-sans",
-  weight: "100 900",
-});
-const geistMono = localFont({
-  src: "./fonts/GeistMonoVF.woff",
-  variable: "--font-geist-mono",
-  weight: "100 900",
+const inter = Inter({
+  subsets: ["latin"],
+  variable: "--font-inter",
+  display: "swap",
 });
 
 export const metadata: Metadata = {
-  title: "Mi Portafolio",
-  description: "Mi Portafolio hecho con Next.js",
+  title: "Juan Diego Murillo Rivas | Full Stack Developer",
+  description:
+    "Portafolio de Juan Diego Murillo Rivas, estudiante de Desarrollo de Software en Medellín. Aplicaciones web con Next.js, React, TypeScript, PostgreSQL y Appwrite.",
 };
 
 export default function RootLayout({
@@ -26,14 +21,9 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="es">
-      <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
-      >
-        <LanguageProvider>
-          {children}
-          <Footer />
-        </LanguageProvider>
+    <html lang="es" className={inter.variable}>
+      <body>
+        <LanguageProvider>{children}</LanguageProvider>
       </body>
     </html>
   );

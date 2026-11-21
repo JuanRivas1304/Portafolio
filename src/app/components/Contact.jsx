@@ -1,72 +1,65 @@
-// Cuarta sección - Contact
-'use client';
-import React from 'react';
-import { MdOutlineMailOutline } from "react-icons/md";
-import { FaPhoneAlt } from "react-icons/fa";
-import { CiLocationOn } from "react-icons/ci";
-import Reveal from './Reveal';
-import { useLanguage } from '../i18n/LanguageProvider';
+"use client";
 
-function Contact() {
-  const { translations: t } = useLanguage();
+import { useEffect, useRef, useState } from "react";
+import { SITE } from "../data/site";
+import { useLanguage } from "../i18n/LanguageProvider";
+import Reveal from "./Reveal";
+import { IconCheck, IconCopy, IconDownload, IconGithub, IconLinkedin, IconMail } from "./Icons";
 
-  const contact = [
-    {
-      key: 'email',
-      desc: "Juandrivas66@gmail.com",
-      icon: <MdOutlineMailOutline size={40} className='text-[#fb4f2d]'/>
-    },
-    {
-      key: 'phone',
-      desc: "+57 301 419 29 33",
-      icon: <FaPhoneAlt size={40} className='text-orange-400'/>
-    },
-    {
-      key: 'location',
-      desc: "Medellin, Colombia",
-      icon: <CiLocationOn size={40} className='text-[#F54927]'/>
-    },
-  ];
+export default function Contact() {
+  const { t } = useLanguage();
+  const [copied, setCopied] = useState(false);
+  const timer = useRef(null);
+
+  useEffect(() => () => clearTimeout(timer.current), []);
+
+  const copyEmail = async () => {
+    try {
+      await navigator.clipboard.writeText(SITE.email);
+      setCopied(true);
+      clearTimeout(timer.current);
+      timer.current = setTimeout(() => setCopied(false), 1800);
+    } catch {
+      window.location.href = `mailto:${SITE.email}`;
+    }
+  };
 
   return (
-    <section
-      id="contact"
-      className="relative w-full flex items-center justify-center py-32 px-6 md:px-10 min-h-screen"
-    >
-      <div className="max-w-7xl w-full">
+    <section id="contacto" className="section">
+      <div className="container">
+        <Reveal>
+          <div className="contact-card">
+            <p className="kicker center">
+              {t("contact.kicker")}
+            </p>
+            <h2 className="section-title center">{t("contact.title")}</h2>
+            <p className="contact-text">{t("contact.text")}</p>
 
-        <Reveal><h4 className="text-3xl font-bold text-center mb-6 text-gray-800">
-          {t.contact.title}
-        </h4></Reveal>
+            <p className="contact-email">{SITE.email}</p>
 
-        <Reveal delay={100}><h6 className="text-lg font-medium text-center mb-12 text-gray-600">
-          {t.contact.subtitle}
-        </h6></Reveal>
+            <div className="hero-actions center">
+              <a href={`mailto:${SITE.email}`} className="btn btn-primary">
+                <IconMail /> {t("contact.email")}
+              </a>
+              <button type="button" className="btn btn-ghost" onClick={copyEmail}>
+                {copied ? <IconCheck /> : <IconCopy />} {copied ? t("contact.copied") : t("contact.copy")}
+              </button>
+            </div>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-          {contact.map((contactItem, index) => (
-            <Reveal key={index} delay={index * 90} scale><div
-              key={index}
-              className="reveal-card border rounded-xl shadow-md hover:shadow-xl transition-[transform,box-shadow] duration-300 bg-white flex flex-col h-full p-5"
-            >
-              {/* Icono */}
-              <div className="mb-3 flex justify-center transition-transform duration-300 hover:scale-110">{contactItem.icon}</div>
-
-              {/* Título */}
-              <h5 className="text-lg sm:text-xl font-semibold mb-2 text-gray-600 text-center">
-                {t.contact.items[contactItem.key]}
-              </h5>
-
-              {/* Descripción */}
-              <p className="text-gray-500 mb-4 flex-grow text-center text-sm sm:text-base">
-                {contactItem.desc}
-              </p>
-            </div></Reveal>
-          ))}
-        </div>
+            <div className="social-row center">
+              <a href={SITE.linkedin} target="_blank" rel="noopener noreferrer" className="social-link">
+                <IconLinkedin /> {t("contact.linkedin")}
+              </a>
+              <a href={SITE.github} target="_blank" rel="noopener noreferrer" className="social-link">
+                <IconGithub /> {t("contact.github")}
+              </a>
+              <a href={SITE.cv} download={SITE.cvFileName} className="social-link">
+                <IconDownload /> {t("contact.cv")}
+              </a>
+            </div>
+          </div>
+        </Reveal>
       </div>
     </section>
   );
 }
-
-export default Contact;

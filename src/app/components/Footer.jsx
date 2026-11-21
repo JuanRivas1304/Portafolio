@@ -1,16 +1,19 @@
-// Quinta sección - Footer
-'use client';
-import React from 'react';
-import { useLanguage } from '../i18n/LanguageProvider';
+"use client";
 
-function Footer() {
-  const { translations: t } = useLanguage();
+import { SITE } from "../data/site";
+import { useLanguage } from "../i18n/LanguageProvider";
+
+export default function Footer() {
+  const { t } = useLanguage();
 
   return (
-    <footer className='text-gray-700 text-center py-6 text-sm md:text-base'>
-      {t.footer.copyright}
+    <footer className="footer">
+      <div className="container footer-inner">
+        <p>
+          © {new Date().getFullYear()} {SITE.name}. {t("footer.rights")}.
+        </p>
+        <p className="footer-built">{t("footer.built")}</p>
+      </div>
     </footer>
   );
 }
-
-export default Footer;

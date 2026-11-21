@@ -1,17 +1,27 @@
-import ParticlesBackground from "./components/Particles";
+import About from "./components/About";
+import Contact from "./components/Contact";
+import Education from "./components/Education";
+import Footer from "./components/Footer";
+import Navbar from "./components/Navbar";
+import Particles from "./components/Particles";
 import Presentation from "./components/Presentation";
 import Projects from "./components/Projects";
 import Skills from "./components/Skills";
-import Contact from "./components/Contact";
 
 export default function Home() {
   return (
-    <div className="relative min-h-screen">
-      <Presentation />
-      <Projects />
-      <Skills />
-      <Contact />
-      <ParticlesBackground />
-    </div>
+    <>
+      <Particles />
+      <Navbar />
+      <main className="page">
+        <Presentation />
+        <About />
+        <Skills />
+        <Projects />
+        <Education />
+        <Contact />
+      </main>
+      <Footer />
+    </>
   );
 }
